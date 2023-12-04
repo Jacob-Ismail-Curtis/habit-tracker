@@ -1,10 +1,11 @@
 import React from 'react';
 import HabitCell from './HabitCell';
 
-const MonthView = ({ habits, toggleHabit, viewMonth, currentDate, changeMonth }) => {
-  const year = currentDate.getFullYear();
-  const daysInMonth = new Date(year, viewMonth + 1, 0).getDate();
-  const dates = Array.from({ length: daysInMonth }, (_, i) => new Date(year, viewMonth, i + 1));
+const MonthView = ({ habits, toggleHabit, viewDate, currentDate, changeMonth }) => {
+  const year = viewDate.getFullYear();
+  const month = viewDate.getMonth();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const dates = Array.from({ length: daysInMonth }, (_, i) => new Date(year, month, i + 1));
 
   const formatTopBarDate = (date) => {
     const options = { month: 'short', day: 'numeric', weekday: 'short' };
@@ -16,10 +17,6 @@ const MonthView = ({ habits, toggleHabit, viewMonth, currentDate, changeMonth })
     return date.getDate() === today.getDate() && date.getMonth() === today.getMonth() && date.getFullYear() === today.getFullYear();
   };
 
-  const cellWidth = 20; // width of each date cell in rem
-  const containerWidth = dates.length * cellWidth;
-
-  
   return (
     <div>
       <div className="flex items-center justify-between border-b">
@@ -52,6 +49,7 @@ const MonthView = ({ habits, toggleHabit, viewMonth, currentDate, changeMonth })
                   habit={habit}
                   toggleHabit={toggleHabit}
                   currentDate={currentDate}
+                  color={habit.color}
                 />
             ))}
           </div>

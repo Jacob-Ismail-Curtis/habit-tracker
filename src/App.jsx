@@ -1,12 +1,13 @@
 import React from 'react';
 import HabitTracker from './components/HabitTracker';
-import Intro from './components/Intro';
+import Header from './components/Header';
 import Footer from './components/Footer';
+import { auth } from '../firebaseConfig';
 
 function App() {
   return (
     <div className="App">
-      <Intro />
+      <Header />
       <HabitTracker />
       {/* <Footer /> */}
     </div>
