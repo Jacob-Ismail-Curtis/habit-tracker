@@ -19,9 +19,9 @@ const HabitCell = ({ date, habit, toggleHabit, currentDate, color }) => {
 
   return (
     <div
-      className={`flex-grow border cursor-pointer flex items-center justify-center ${isComplete ? 'bg-green-200' : 'hover:bg-gray-100'} ${isFutureDate ? 'cursor-not-allowed opacity-50' : ''}`}
+      className={`flex-grow border cursor-pointer flex items-center justify-center ${isFutureDate ? 'cursor-not-allowed opacity-50' : ''}`}
       onClick={handleCellClick}
-      style={{ minHeight: '75px',  backgroundColor: isComplete ? color : 'transparent',}}
+      style={{ minHeight: '75px',  backgroundColor: isComplete ? color : 'transparent', hover: 'bg-gray-100'}}
     >
     </div>
   );

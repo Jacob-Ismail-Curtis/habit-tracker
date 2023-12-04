@@ -1,7 +1,7 @@
 import React from 'react';
 import HabitCell from './HabitCell';
 
-const MonthView = ({ habits, toggleHabit, viewDate, currentDate, changeMonth }) => {
+const MonthView = ({ habits, toggleHabit, viewDate, currentDate, changeMonth, onHabitClick }) => {
   const year = viewDate.getFullYear();
   const month = viewDate.getMonth();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -39,9 +39,11 @@ const MonthView = ({ habits, toggleHabit, viewDate, currentDate, changeMonth }) 
         <button onClick={() => changeMonth(1)} className="w-[75px] p-2 border text-xl">&#8680;</button> {/* Right arrow */}
       </div>
       <div>
-        {habits.map(habit => (
-          <div key={habit.name} className="grid grid-cols-[repeat(auto-fill,_minmax(75px,_1fr))]">
-            <div className="text-center border-r flex items-center justify-center">{habit.name}</div>
+      {habits.map(habit => (
+        <div key={habit.name} className="grid grid-cols-[repeat(auto-fill,_minmax(75px,_1fr))]">
+          <div className="text-center border-r flex items-center justify-center cursor-pointer hover:bg-gray-100" onClick={() => onHabitClick(habit)}>
+            {habit.name}
+          </div>
             {dates.map(date => (
                 <HabitCell
                   key={`${habit.name}-${date}`}
